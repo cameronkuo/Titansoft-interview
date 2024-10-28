@@ -8,10 +8,13 @@ export const login = async (
 ): Promise<AxiosResponse<_APIs_Response__CheckOTPCode>> =>
   useErrorHandler(
     defaultRequest({
-      url: '/verify',
+      url: '/auth/verify',
       method: 'POST',
       data,
     }),
+    {
+      disableNotification: true,
+    },
   )
 
 /** 取得使用者資訊 */
@@ -20,7 +23,7 @@ export const getUserInfo = async (): Promise<
 > =>
   useErrorHandler(
     defaultRequest({
-      url: '/get_user_info',
+      url: '/auth',
       method: 'GET',
     }),
   )

@@ -18,7 +18,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   const login = (code: string) => {
     return APIs.auth.login({ code }).then(res => {
-      const token = res.data.data.token
+      const token = res.data.token
       setAuthorization(defaultService, token)
       setCookie('token', token, 1)
     })
@@ -28,7 +28,7 @@ export const useAuthStore = defineStore('auth', () => {
     return APIs.auth
       .getUserInfo()
       .then(res => {
-        user.value = res.data.data
+        user.value = res.data
         devConsole.log('取得使用者資訊', user.value)
         return Promise.resolve(true)
       })

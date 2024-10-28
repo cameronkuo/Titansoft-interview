@@ -5,18 +5,18 @@ interface _APIs_Request__CheckOTPCode {
   code: string
 }
 
-type _APIs_Response__CheckOTPCode = _APIs_Response__Construct<{
+interface _APIs_Response__CheckOTPCode {
   /** access token */
   token: string
-}>
+}
 
 // ========== Get User Info ========== //
 
-type _APIs_Response__GetUserInfo = _APIs_Response__Construct<{
+interface _APIs_Response__GetUserInfo {
   /** 使用者名稱 */
   username: string
   /** 使用者頭像 */
   photo: string
   /** 使用者引言 */
   quote: string
-}>
+}
