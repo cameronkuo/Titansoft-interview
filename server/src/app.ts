@@ -1,9 +1,10 @@
-import express from "express";
 import path from "path";
+
 import cookieParser from "cookie-parser";
-import logger from "@/middlewares/logger";
+import express from "express";
 
 import API from "@/APIs";
+import logger from "@/middlewares/logger";
 
 const app = express();
 

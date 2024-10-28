@@ -1,8 +1,10 @@
-import type { Application, Request, Response } from "express";
 import fs from "fs";
-import logger from "morgan";
 import path from "path";
+
+import logger from "morgan";
 import * as rfs from "rotating-file-stream";
+
+import type { Application, Request, Response } from "express";
 
 const LOGS_DIR = path.join(__dirname, "../../", "logs");
 

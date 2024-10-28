@@ -1,4 +1,5 @@
 import colors from "colors";
+
 import type { ErrorRequestHandler } from "express";
 
 const errorRequestHandler: ErrorRequestHandler = function (err, req, res, __) {
