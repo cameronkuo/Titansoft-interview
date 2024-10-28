@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+import routerGuards from '@/router/routerGuards'
+
 import HomeView from '@/views/HomeView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import VerifyView from '@/views/VerifyView.vue'
@@ -29,5 +31,7 @@ const router = createRouter({
     },
   ],
 })
+
+routerGuards(router)
 
 export default router
