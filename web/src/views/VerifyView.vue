@@ -85,7 +85,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="mx-auto mt-[20vh] flex max-w-screen-sm flex-col items-center justify-center gap-5">
+  <main class="mx-auto mt-[20vh] flex max-w-screen-sm flex-col items-center justify-center gap-5">
     <h1 class="text-center">Verify</h1>
     <p class="text-center">Enter the 4-digit code sent to you</p>
     <ElAlert v-if="errorMessage" :title="errorMessage" type="error" show-icon class="border border-red-500" />
@@ -113,5 +113,5 @@ onMounted(() => {
         <span v-else>Submit</span>
       </button>
     </form>
-  </div>
+  </main>
 </template>
