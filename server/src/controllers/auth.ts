@@ -94,7 +94,7 @@ export const getAuthInfo: RequestHandler<
     res.send({
       username: "johnDoe",
       quote: "Hello, World!",
-      photo: "https://example.com/image.jpg",
+      photo: `${req.protocol}://${req.get("host")}/images/avatar.png`,
     });
   } else {
     res.status(401).send({
