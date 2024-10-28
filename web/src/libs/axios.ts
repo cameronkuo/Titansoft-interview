@@ -49,10 +49,6 @@ const createService = (config: CreateAxiosDefaults) => {
       return config
     },
     error => {
-      ElNotification.error({
-        title: '錯誤',
-        message: error.message,
-      })
       devConsole.log({ error }) // for debug
       return Promise.reject(error)
     },
