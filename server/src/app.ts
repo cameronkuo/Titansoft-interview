@@ -1,6 +1,7 @@
 import path from "path";
 
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import express from "express";
 
 import API from "@/APIs";
@@ -10,6 +11,7 @@ const app = express();
 
 logger(app);
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
