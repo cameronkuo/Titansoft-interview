@@ -1,16 +1,11 @@
 import express from "express";
+
+import * as authController from "@/controllers/auth";
+
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("Auth route");
-});
+router.get("/", authController.getAuthInfo);
 
-router.post("/register", (req, res) => {
-  res.send("Register route");
-});
-
-router.post("/login", (req, res) => {
-  res.send("Login route");
-});
+router.post("/verify", authController.verifyCode);
 
 export default router;
