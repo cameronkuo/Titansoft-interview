@@ -35,22 +35,26 @@ import type { RequestHandler } from "express";
  * }
  * ```
  */
-export const getAuthInfo: RequestHandler<object, types.auth.VerifyCodeResponseSchema, types.auth.VerifyCodeSchema> = (
-  req,
-  res
-) => {
+export const verifyCode: RequestHandler<
+  object,
+  types.auth.VerifyCodeResponseSchema & { message?: string },
+  types.auth.VerifyCodeSchema
+> = (req, res) => {
   const { code } = req.body;
 
-  if (code === "12345") {
-    res.send({
-      valid: true,
-      token: "example_token",
-    });
-  } else {
-    res.send({
-      valid: false,
-    });
-  }
+  setTimeout(() => {
+    if (code === "1234") {
+      res.send({
+        valid: true,
+        token: "example_token",
+      });
+    } else {
+      res.status(400).send({
+        valid: false,
+        message: "invalid code",
+      });
+    }
+  }, 1000);
 };
 
 /**
@@ -82,7 +86,7 @@ export const getAuthInfo: RequestHandler<object, types.auth.VerifyCodeResponseSc
  * }
  * ```
  */
-export const verifyCode: RequestHandler<
+export const getAuthInfo: RequestHandler<
   object,
   Either<types.auth.AuthInfoResponseSchema, types.common.ErrorResponseSchema>
 > = (req, res) => {
