@@ -42,19 +42,17 @@ export const verifyCode: RequestHandler<
 > = (req, res) => {
   const { code } = req.body;
 
-  setTimeout(() => {
-    if (code === "1234") {
-      res.send({
-        valid: true,
-        token: "example_token",
-      });
-    } else {
-      res.status(400).send({
-        valid: false,
-        message: "invalid code",
-      });
-    }
-  }, 1000);
+  if (code === "1234") {
+    res.send({
+      valid: true,
+      token: "example_token",
+    });
+  } else {
+    res.status(400).send({
+      valid: false,
+      message: "invalid code",
+    });
+  }
 };
 
 /**
@@ -90,17 +88,15 @@ export const getAuthInfo: RequestHandler<
   object,
   Either<types.auth.AuthInfoResponseSchema, types.common.ErrorResponseSchema>
 > = (req, res) => {
-  setTimeout(() => {
-    if (req.headers.authorization === "example_token") {
-      res.send({
-        username: "johnDoe",
-        quote: "Hello, World!",
-        photo: `${req.protocol}://${req.get("host")}/images/avatar.png`,
-      });
-    } else {
-      res.status(401).send({
-        message: "unauthorized",
-      });
-    }
-  }, 1000);
+  if (req.headers.authorization === "example_token") {
+    res.send({
+      username: "johnDoe",
+      quote: "Hello, World!",
+      photo: `${req.protocol}://${req.get("host")}/images/avatar.png`,
+    });
+  } else {
+    res.status(401).send({
+      message: "unauthorized",
+    });
+  }
 };
