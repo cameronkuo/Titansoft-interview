@@ -60,6 +60,7 @@ const onPaste = (event: ClipboardEvent) => {
 }
 
 const submit = (e: Event) => {
+  if (loading.value) return // prevent double submit
   const data = new FormData(e.target as HTMLFormElement)
   const code = data.getAll('code').join('')
   loading.value = true
@@ -75,8 +76,8 @@ const submit = (e: Event) => {
     })
     .catch(error => {
       errorMessage.value = error.response?.data.message ?? 'Something went wrong'
+      loading.value = false
     })
-    .finally(() => (loading.value = false))
 }
 
 onMounted(() => {
@@ -105,7 +106,7 @@ onMounted(() => {
           @paste="onPaste"
         />
       </div>
-      <button type="submit" class="mt-5 flex w-full items-center justify-center rounded border-none bg-blue-500 p-2 text-white">
+      <button type="submit" :disabled="loading" class="mt-5 flex w-full items-center justify-center rounded border-none bg-blue-500 p-2 text-white">
         <template v-if="loading">
           <IconSprite id="loading" class="-ml-1 mr-3 h-5 w-5 animate-spin text-white" />
           <span>Loading...</span>
