@@ -26,6 +26,14 @@ npm run build
 npm run lint
 ```
 
+### Environment Variables
+
+1. Create `.env` file in root directory
+2. Add environment variables in `.env` file
+   ```ini
+   VITE_API_URL=http://localhost:3000/api/v1
+   ```
+
 ### Develop and Debug
 
 1. console only in development mode
