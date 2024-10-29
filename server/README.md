@@ -46,3 +46,8 @@ npm start
 ### ESLint
 
 1. [eslint-import-plugin](https://github.com/import-js/eslint-plugin-import) - ESLint plugin with rules that help validate proper imports.
+
+### Endpoints
+
+1. `/api/v1/auth/verify`: Verify code received from client. Return token if code is correct.
+2. `/api/v1/auth`: Get user info with `Authorization` header, which get from `/api/v1/auth/verify`.
