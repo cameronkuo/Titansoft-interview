@@ -90,15 +90,17 @@ export const getAuthInfo: RequestHandler<
   object,
   Either<types.auth.AuthInfoResponseSchema, types.common.ErrorResponseSchema>
 > = (req, res) => {
-  if (req.headers.authorization === "example_token") {
-    res.send({
-      username: "johnDoe",
-      quote: "Hello, World!",
-      photo: `${req.protocol}://${req.get("host")}/images/avatar.png`,
-    });
-  } else {
-    res.status(401).send({
-      message: "unauthorized",
-    });
-  }
+  setTimeout(() => {
+    if (req.headers.authorization === "example_token") {
+      res.send({
+        username: "johnDoe",
+        quote: "Hello, World!",
+        photo: `${req.protocol}://${req.get("host")}/images/avatar.png`,
+      });
+    } else {
+      res.status(401).send({
+        message: "unauthorized",
+      });
+    }
+  }, 1000);
 };
